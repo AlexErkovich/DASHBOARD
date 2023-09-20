@@ -4,16 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"> <!-- Подключаем стили -->
-    <title>TODO List</title>
-    
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="todo.css"> 
 
-   
+
+
 </head>
 
 <body>
+    <?php
+    include 'path/to/menu.php';
+    ?>
     <div class="todo">
-        <input type="text" id="connect" name="name" required size="60" />
         <!-- Основной блок списка задач -->
         <div class="todo__block">
             <!-- Раздел "Communication" -->
@@ -82,67 +84,67 @@
 
         <input id="btn-save" type="button" value="Выполнить" onclick="saveToDatabase()">
 
-<script>
-        // Функция для создания и добавления иконки удаления
-        function createDeleteIcon() {
-            const deleteIcon = document.createElement('span');
-            deleteIcon.innerHTML = '&#10006;'; // Используем символ "крестика"
-            deleteIcon.classList.add('delete-icon');
-            deleteIcon.addEventListener('click', deleteContentRow);
-            return deleteIcon;
-        }
-
-        // Функция для удаления поля
-        function deleteContentRow(event) {
-            const contentRow = event.target.parentElement;
-            contentRow.parentElement.removeChild(contentRow);
-        }
-
-        // Функция для добавления нового поля в раздел
-        function addContentRow(section) {
-            const todoBlock = document.querySelector(`.todo__block label[for="${section.toLowerCase()}"]`);
-            const newRow = document.createElement('div');
-            newRow.classList.add('todo__content__row');
-
-            const newInputCheckbox = document.createElement('input');
-            newInputCheckbox.type = 'checkbox';
-            newInputCheckbox.id = `row_${Math.random().toString(36).substr(2, 9)}`; // Генерируем уникальный ID
-
-            const newInputText = document.createElement('input');
-            newInputText.type = 'text';
-            newInputText.id = `${section.toLowerCase()}_${Math.random().toString(36).substr(2, 9)}`; // Генерируем уникальный ID
-            newInputText.name = `${section.toLowerCase()}_task`;
-            newInputText.size = 60;
-
-            const deleteIcon = createDeleteIcon();
-
-            newRow.appendChild(newInputCheckbox);
-            newRow.appendChild(newInputText);
-            newRow.appendChild(deleteIcon);
-            todoBlock.parentElement.insertBefore(newRow, todoBlock.nextElementSibling);
-        }
-
-    </script>
-    <script>
-        function saveToDatabase() {
-        const communicationValue = document.getElementById('communication').value;
-        const advertisementValue = document.getElementById('advertisement').value;
-        const financeValue = document.getElementById('finance').value;
-        const productionValue = document.getElementById('production').value;
-        const qualityValue = document.getElementById('quality').value;
-        const prValue = document.getElementById('pr').value;
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost/path_to_your_project/save_to_db.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log(xhr.responseText);
+        <script>
+            // Функция для создания и добавления иконки удаления
+            function createDeleteIcon() {
+                const deleteIcon = document.createElement('span');
+                deleteIcon.innerHTML = '&#10006;'; // Используем символ "крестика"
+                deleteIcon.classList.add('delete-icon');
+                deleteIcon.addEventListener('click', deleteContentRow);
+                return deleteIcon;
             }
-        };
-        xhr.send(`communication=${communicationValue}&advertisement=${advertisementValue}&finance=${financeValue}&production=${productionValue}&quality=${qualityValue}&pr=${prValue}`);
-    }
-</script>
+
+            // Функция для удаления поля
+            function deleteContentRow(event) {
+                const contentRow = event.target.parentElement;
+                contentRow.parentElement.removeChild(contentRow);
+            }
+
+            // Функция для добавления нового поля в раздел
+            function addContentRow(section) {
+                const todoBlock = document.querySelector(`.todo__block label[for="${section.toLowerCase()}"]`);
+                const newRow = document.createElement('div');
+                newRow.classList.add('todo__content__row');
+
+                const newInputCheckbox = document.createElement('input');
+                newInputCheckbox.type = 'checkbox';
+                newInputCheckbox.id = `row_${Math.random().toString(36).substr(2, 9)}`; // Генерируем уникальный ID
+
+                const newInputText = document.createElement('input');
+                newInputText.type = 'text';
+                newInputText.id = `${section.toLowerCase()}_${Math.random().toString(36).substr(2, 9)}`; // Генерируем уникальный ID
+                newInputText.name = `${section.toLowerCase()}_task`;
+                newInputText.size = 60;
+
+                const deleteIcon = createDeleteIcon();
+
+                newRow.appendChild(newInputCheckbox);
+                newRow.appendChild(newInputText);
+                newRow.appendChild(deleteIcon);
+                todoBlock.parentElement.insertBefore(newRow, todoBlock.nextElementSibling);
+            }
+
+        </script>
+        <script>
+            function saveToDatabase() {
+                const communicationValue = document.getElementById('communication').value;
+                const advertisementValue = document.getElementById('advertisement').value;
+                const financeValue = document.getElementById('finance').value;
+                const productionValue = document.getElementById('production').value;
+                const qualityValue = document.getElementById('quality').value;
+                const prValue = document.getElementById('pr').value;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://localhost/path_to_your_project/save_to_db.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        console.log(xhr.responseText);
+                    }
+                };
+                xhr.send(`communication=${communicationValue}&advertisement=${advertisementValue}&finance=${financeValue}&production=${productionValue}&quality=${qualityValue}&pr=${prValue}`);
+            }
+        </script>
 
 </body>
 

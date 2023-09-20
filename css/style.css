@@ -2,35 +2,43 @@ body {
   margin: 0;
 }
 
-/*MENU*/
+/* Стили для h1 */
+h1 {
+  color: #1d1d1d;
+  margin-top: 300px; /* Добавлен верхний отступ для h1 */
+  text-align: center; /* Центрирование текста */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Меню */
 .menu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #0d6ed5;
   width: 100%;
-
   position: fixed;
   align-items: center;
   justify-content: space-between;
   height: 80px;
   padding-left: 24px;
   padding-right: 24px;
+  top: 0; /* Фиксирование меню наверху страницы */
 }
 
 .menu__list {
   display: flex;
   flex-direction: row;
   list-style: none;
-  gap: 32px;
+  gap: 40px;
+  width: fit-content;
+  justify-content: center;
 }
 
 .menu__link {
   color: #fff;
   text-decoration: none;
-  position: relative; /* Устанавливаем относительное позиционирование */
-  color: #fff;
-  /* сократить код*/
+  position: relative;
   text-align: center;
   font-family: Helvetica;
   font-size: 16px;
@@ -38,49 +46,69 @@ body {
   font-weight: 100;
   line-height: normal;
 }
-
 
 .menu__sublist {
   display: flex;
   flex-direction: column;
   background-color: #0d6ed5;
-
   width: fit-content;
   padding: 32px;
   gap: 8px;
   border-radius: 8px;
+  position: absolute;
+  box-shadow: 0px 4px 16px 0px rgba(0, 121, 254, 0.16);
+  transition: opacity 0.3s ease-in-out; /* Анимация для плавного появления */
+  display: none; /* Изначально скрыто */
 }
 
-.menu__sublink  {
+.menu__sublink {
   text-align: center;
   font-family: Helvetica;
   font-size: 16px;
   font-style: normal;
   font-weight: 100;
   line-height: normal;
-  
   text-decoration: none;
   color: #fff;
 }
 
-
-
-.menu__subitem{
+.menu__subitem {
   list-style: none;
+}
+
+.menu__link:hover + .menu__sublist,
+.menu__sublist:hover {
+  display: flex; /* Показываем подменю при наведении на ссылку или подменю */
 }
 
 .menu__sublink:hover {
   color: #3fa1ff;
 }
 
-.menu__sublist.hidden {
-  display: none;
-  position: absolute;
+
+.title-page{
+  display: flex;
+  flex-direction: row;
   
 }
 
-/* Анимация для плавного появления */
-.menu__sublist {
-  transition: opacity 0.3s ease-in-out;
+.section__main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
 }
 
+.my-button {
+  /* Здесь можно задать различные стили для кнопки */
+  
+  font-size: 16px; /* Размер шрифта */
+  background-color: #0d6ed5; /* Цвет фона */
+  color: #fff; /* Цвет текста */
+  border: none; /* Убираем границу */
+  border-radius: 5px; /* Закругляем углы */
+}
+
+.my-button:hover {
+  background-color: #0751a0; /* Цвет фона при наведении */
+}
