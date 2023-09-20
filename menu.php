@@ -1,28 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello, world!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выпадающее меню</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="menu"></div>
-    <nav>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                Связь и коммуникация
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Связь и коммуникация</a>
-                <a class="dropdown-item" href="#">Учетные записи</a>
-                <a class="dropdown-item" href="#">Коллеги</a>
-            </div>
-        </li>
-    </nav>
+    <header class="menu">
+        <img src="img/logo.svg">
+        <nav>
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Connect">Связь и коммуникация</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Reclama">Реклама</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Finance">Финансы</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Production">Производство</a>
+                </li>
+                <li class="menu__item">
+                    <a href="#" class="menu__link" data-toggle="submenu" data-target="PR">PR</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="Connect" class="menu__sublist hidden">
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Связь и коммуникация</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Учетные записи</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Коллеги</a></li>
     </div>
+    <div id="Reclama" class="menu__sublist hidden">
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Планирование</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Производство</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Размещение</a></li>
+    </div>
+    <div id="Finance" class="menu__sublist hidden">
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Доход</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Расход</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Учет</a></li>
+    </div>
+
+    <div id="Production" class="menu__sublist hidden">
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Планирование</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Производство</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Размещение</a></li>
+    </div>
+
+    <div id="PR" class="menu__sublist hidden">
+        <li class="menu__subitem"><a href="#" class="menu__sublink">PR</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Партнеры</a></li>
+        <li class="menu__subitem"><a href="#" class="menu__sublink">Вводные услуги</a></li>
+    </div>
+    <script>
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const targetId = event.target.getAttribute('data-target');
+            const sublist = document.getElementById(targetId);
+
+            // Получаем позицию и размеры ссылки
+            const linkRect = event.target.getBoundingClientRect();
+
+            // Устанавливаем позицию и размеры блока подменю
+            sublist.style.top = `${linkRect.bottom}56px`; // Отступ от верха на высоту ссылки
+            sublist.style.left = `${linkRect.left}800px`; // Позиция по горизонтали устанавливается так, чтобы блок был слева от ссылки
+
+            sublist.classList.toggle('hidden');
+        }
+
+        const submenuToggles = document.querySelectorAll('[data-toggle="submenu"]');
+
+        submenuToggles.forEach(toggle => {
+            toggle.addEventListener('click', toggleSubmenu);
+        });
+
+    </script>
 </body>
 
 </html>
