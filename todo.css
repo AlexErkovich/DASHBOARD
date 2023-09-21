@@ -1,4 +1,84 @@
-.todo__block{
-padding: 16px;
+.todo__block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
+.todo {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 56px;
+  gap: 24px;
+}
+
+.todo__content__row {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+
+  align-items: center;
+}
+
+#row_01 {
+  width: 24px;
+  height: 24px;
+}
+#btn-save {
+  padding: 12px 28px;
+  width: auto;
+  color: #fff;
+  background-color: #0d6ed5;
+  border-radius: 8px;
+  border: 1px solid #0d6ed5;
+
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+
+#btn-save:hover {
+  background-color: #004fa4;
+  cursor: pointer;
+}
+
+.button-input {
+  padding: 12px 28px;
+  width: fit-content;
+  color: #fff;
+  background-color: #0d6ed5;
+  border-radius: 8px;
+  border: 1px solid #0d6ed5;
+
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+
+.button-input:hover {
+  background-color: #004a99;
+  cursor: pointer;
+}
+
+.todo__content__row input {
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #004fa4;
+}
+
+label {
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }

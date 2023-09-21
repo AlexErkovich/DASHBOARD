@@ -5,9 +5,9 @@ body {
 /* Стили для h1 */
 h1 {
   color: #1d1d1d;
-  margin-top: 300px; /* Добавлен верхний отступ для h1 */
-  text-align: center; /* Центрирование текста */
+  text-align: center; /* Centered the text */
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
 
 /* Меню */
@@ -17,13 +17,12 @@ h1 {
   justify-content: space-between;
   background-color: #0d6ed5;
   width: 100%;
-  position: fixed;
   align-items: center;
   justify-content: space-between;
   height: 80px;
   padding-left: 24px;
   padding-right: 24px;
-  top: 0; /* Фиксирование меню наверху страницы */
+  top: 0; /* Fixed the menu to the top of the page */
 }
 
 .menu__list {
@@ -33,6 +32,7 @@ h1 {
   gap: 40px;
   width: fit-content;
   justify-content: center;
+  
 }
 
 .menu__link {
@@ -45,20 +45,40 @@ h1 {
   font-style: normal;
   font-weight: 100;
   line-height: normal;
+  
+}
+
+.menu__item {
+  position: relative; /* Added position relative */
+  
+  
 }
 
 .menu__sublist {
-  display: flex;
-  flex-direction: column;
-  background-color: #0d6ed5;
-  width: fit-content;
-  padding: 32px;
-  gap: 8px;
-  border-radius: 8px;
+  display: none; /* Initially hidden */
   position: absolute;
+  top: 120%; /* Position below the menu item */
+  left: 0;
+  background-color: #0d6ed5;
+  border-radius: 8px;
+  padding: 16px;
   box-shadow: 0px 4px 16px 0px rgba(0, 121, 254, 0.16);
-  transition: opacity 0.3s ease-in-out; /* Анимация для плавного появления */
-  display: none; /* Изначально скрыто */
+  transition: opacity 0.3s ease-in-out;
+  width: 200px; /* Adjusted the width */
+  
+  
+}
+
+.menu__sublist.hidden {
+  flex-direction: column;
+  box-shadow: 0px 50px 200px 0px rgba(0, 0, 0, 0.06);
+  border: 2px solid #1d1d1d;
+  
+  
+}
+
+.menu__subitem {
+  list-style: none;
 }
 
 .menu__sublink {
@@ -70,45 +90,56 @@ h1 {
   line-height: normal;
   text-decoration: none;
   color: #fff;
-}
-
-.menu__subitem {
-  list-style: none;
-}
-
-.menu__link:hover + .menu__sublist,
-.menu__sublist:hover {
-  display: flex; /* Показываем подменю при наведении на ссылку или подменю */
+  display: block; /* Ensures proper spacing between items */
+  padding: 8px 0; /* Added padding */
 }
 
 .menu__sublink:hover {
   color: #3fa1ff;
 }
 
+.menu__item:hover .menu__sublist {
+  display: flex; /* Display submenu on hover */
+}
 
 .title-page{
   display: flex;
   flex-direction: row;
-  
+  justify-content: space-between;
+  align-items: flex-end;
+  text-align: center;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 32px;
 }
+
 
 .section__main{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  height: fit-content;
-}
-
-.my-button {
-  /* Здесь можно задать различные стили для кнопки */
+  gap: 24px;
   
-  font-size: 16px; /* Размер шрифта */
-  background-color: #0d6ed5; /* Цвет фона */
-  color: #fff; /* Цвет текста */
-  border: none; /* Убираем границу */
-  border-radius: 5px; /* Закругляем углы */
 }
 
-.my-button:hover {
-  background-color: #0751a0; /* Цвет фона при наведении */
+
+button{
+  padding: 12px 28px;
+  color: #fff;
+  background-color: #0d6ed5;
+  border-radius: 8px;
+  border: 1px solid #0d6ed5;
+ 
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+
+
+button:hover{
+  background-color: #004fa4;
+  cursor: pointer;
+ 
 }

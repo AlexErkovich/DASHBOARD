@@ -4,24 +4,33 @@ $username = "Alex";
 $password = "12345"; 
 $dbname = "todo_db"; 
 
+// Создаем соединение
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-
+// Проверяем соединение
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $communication = $_POST['communication'];
-    $advertisement = $_POST['advertisement'];
-    $finance = $_POST['finance'];
-    $production = $_POST['production'];
-    $quality = $_POST['quality'];
-    $pr = $_POST['pr'];
+    $communicationValue = $_POST['communication'];
+    $advertisementValue = $_POST['advertisement'];
+    $financeValue = $_POST['finance'];
+    $productionValue = $_POST['production'];
+    $qualityValue = $_POST['quality'];
+    $prValue = $_POST['pr'];
 
-    // Here you can use these variables to insert data into your database or perform other actions
+    // Подготовка SQL-запроса
+    $sql = "INSERT INTO todo_table (communication, advertisement, finance, production, quality, pr)
+            VALUES ('$communicationValue', '$advertisementValue', '$financeValue', '$productionValue', '$qualityValue', '$prValue')";
 
-    echo "Data received:\nCommunication: $communication\nAdvertisement: $advertisement\nFinance: $finance\nProduction: $production\nQuality: $quality\nPR: $pr";
-} else {
-    echo "Invalid request";
+    if ($conn->query($sql) === TRUE) {
+        echo "Данные успешно сохранены в базе данных.";
+    } else {
+        echo "Ошибка при сохранении данных: " . $conn->error;
+    }
 }
+
+// Закрываем соединение
+$conn->close();
 ?>
-
-
