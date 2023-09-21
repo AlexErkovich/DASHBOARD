@@ -1,0 +1,101 @@
+/* Стили для меню */
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+#menu {
+  background-color: #0d6ed5;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  padding: 0px 16px 16px;
+}
+
+#menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+#menu ul li {
+  margin-right: 24px;
+  position: relative;
+  width: fit-content;
+}
+
+#menu ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 12px;
+}
+
+#menu ul li a:hover {
+  background-color: rgba(255, 0, 0, 0.994);
+  border-radius: 5px;
+}
+
+/* Скрыть подменю по умолчанию */
+.sub-menu {
+  display: none;
+}
+
+/* Стили для подразделов */
+.sub-menu {
+  position: absolute;
+  background-color: #0d6ed5;
+  width: fit-content;
+  top: 340%;
+  padding: 24px;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  z-index: 0;
+  border-radius: 8px;
+}
+
+.sub-menu li {
+  width: 100%;
+  margin: 0;
+  padding: 16px;
+  word-wrap: break-word; /* Перенос слов */
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media screen and (max-width: 414px) {
+  #menu {
+    flex-direction: column;
+  }
+
+  #menu ul {
+    flex-direction: column;
+  }
+
+  #menu ul li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .sub-menu {
+    width: 100%;
+  }
+
+  /* Остальные стили остаются без изменений */
+
+  /* Скрыть основное меню на мобильных устройствах */
+  @media screen and (max-width: 414px) {
+    #menu ul {
+      display: none;
+    }
+
+    #menu.mobile-menu-active ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
