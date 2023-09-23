@@ -49,10 +49,12 @@ body {
 .sub-menu {
   position: absolute;
   background-color: #0d6ed5;
-  width: fit-content;
+  width: 260px;
   top: 340%;
-  padding: 24px;
+  padding: 32px;
   flex-direction: column;
+  align-items: center;
+  align-content: center;
   justify-content: center;
   left: 0;
   z-index: 0;

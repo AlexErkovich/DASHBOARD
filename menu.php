@@ -22,7 +22,7 @@
         </ul>
     </div>
     <div id="menu">
-        <img src="img/logo.svg">
+        <a href="index.php"> <img  src="img/logo.svg"></a>
         <ul>
             <li>
                 <a href="#">Связь и коммуникация</a>

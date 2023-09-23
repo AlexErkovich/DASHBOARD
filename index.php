@@ -4,87 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY BIZNES</title>
+    <link rel="stylesheet" href="css/todo.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Меню -->
-    <header class="menu">
-        <img src="img/logo.svg">
-        <nav>
-            <ul class="menu__list">
-                <li class="menu__item">
-                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Connect">Связь и коммуникация</a>
-                    <ul id="Connect" class="menu__sublist hidden">
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Связь и коммуникация</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Учетные записи</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Коллеги</a></li>
-                    </ul>
-                </li>
-                <li class="menu__item">
-                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Reclama">Реклама</a>
-                    <ul id="Reclama" class="menu__sublist hidden">
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Планирование</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Производство</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Размещение</a></li>
-                    </ul>
-                </li>
-                <li class="menu__item">
-                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Finance">Финансы</a>
-                    <ul id="Finance" class="menu__sublist hidden">
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Доход</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Расход</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Учет</a></li>
-                    </ul>
-                </li>
-                <li class="menu__item">
-                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Production">Производство</a>
-                    <ul id="Production" class="menu__sublist hidden">
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Планирование</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Производство</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Размещение</a></li>
-                    </ul>
-                </li>
-                <li class="menu__item">
-                    <a href="#" class="menu__link" data-toggle="submenu" data-target="Qality">Качество</a>
-                    <ul id="Qality" class="menu__sublist hidden">
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Обучение</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Проверка качества</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Анализ качества</a></li>
-                    </ul>
-                </li>
-                <li class="menu__item">
-                    <a href="#" class="menu__link" data-toggle="submenu" data-target="PR">PR</a>
-                    <ul id="PR" class="menu__sublist hidden">
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">PR</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Партнеры</a></li>
-                        <li class="menu__subitem"><a href="#" class="menu__sublink">Вводные услуги</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Your content -->
-    <div class="title-page">
-        <h1>Связь и коммуникация</h1>
-        <div class="section__main">
-            <button onclick="navigationPageDashboard()" class="button"> Бизнес процессы </button>
-            <button onclick="navigationPageTasks()" class="button"> Задачи </button>
+    <?php include('menu.php'); ?>
+    <div class="main">
+        <div class="title-page">
+            <h1>Связь и коммуникация</h1>
+            <div class="section__main">
+                <button onclick="navigationPageDashboard()" class="button"> Бизнес процессы </button>
+                <button onclick="navigationPageTasks()" class="button"> Задачи </button>
+                <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>
+            </div>
         </div>
+
+        <form method="post" action="save_to_db.php">
+            <div class="todo__block" id="communicationBlock">
+                <label for="communication">Communication and communication</label>
+                <div class="todo__content__row">
+                    <input type="text" id="communication" name="communication[]" size="60">
+                </div>
+                <button type="button" onclick="addNewField('communicationBlock')">Добавить поле</button>
+                <div>
+                    <?php echo $communicationMessage; ?>
+                </div>
+            </div>
+            <div class="todo__block" id="advertisementBlock">
+                <label for="advertisement">Advertisement</label>
+                <button type="button" onclick="addNewField('advertisementBlock')">Добавить поле</button>
+                <div class="todo__content__row">
+                    <input type="text" id="advertisement" name="advertisement[]" size="60">
+                </div>
+                <div>
+                    <?php echo $advertisementMessage; ?>
+                </div>
+            </div>
+            <input id="btn-save" type="submit" value="Выполнить" name="submit">
+        </form>
     </div>
+
     <script>
         function navigationPageDashboard() {
-            // Здесь замените 'dashboard.html' на путь к вашей странице
             window.location.href = 'index.php';
         }
+
         function navigationPageTasks() {
-            // Здесь замените 'dashboard.html' на путь к вашей странице
             window.location.href = 'todo.php';
         }
-    </script>
 
+        function navigationPageDashboard() {
+            window.location.href = 'graf.php';
+        }
+
+        function addNewField(blockId) {
+            let block = document.getElementById(blockId);
+            let newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.name = blockId === 'communicationBlock' ? 'communication[]' : 'advertisement[]';
+            newInput.size = '60';
+
+            // Get the label element
+            let label = block.querySelector('label');
+
+            // Insert the new input after the label
+            insertAfter(newInput, label);
+        }
+
+        // Function to insert an element after another
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+    </script>
 </body>
 
 </html>
