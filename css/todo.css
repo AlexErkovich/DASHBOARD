@@ -1,33 +1,29 @@
 .todo__block {
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  gap: 4px;
-  margin: 32px auto;
+  gap: 8px;
+  width: 260px;
+  justify-content: center;
 }
 
 form{
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
-  width: fit-content;
+  justify-content: center;
+  
+  gap: 40px;
+  flex-direction: column;
+  
 }
 
-.todo {
-  width: fit-content;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 56px;
-  margin-left: 8%;
-  margin-right: 8%;
-  margin-bottom: 56px;
-  gap: 16px;
-}
 
 .todo__content__row {
   display: flex;
   flex-direction: row;
   gap: 32px;
   align-items: center;
+  width: 100%;
 }
 
 #row_01 {
@@ -77,6 +73,7 @@ form{
 }
 
 .todo__content__row input {
+  width: 100%;
   height: 32px;
   border-radius: 8px;
   border: 1px solid #004fa4;
@@ -88,4 +85,11 @@ label {
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+}
+
+
+.form__content{
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
 }

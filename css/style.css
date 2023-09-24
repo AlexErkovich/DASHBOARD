@@ -3,51 +3,85 @@ body {
 }
 
 
-.main{
+.main {
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  margin-left: 16%;
-  margin-right: 16%;
+  justify-content: center;
+  margin-left: 4%;
+  margin-right: 4%;
+  width: auto;
 }
+
+
+
 /* Стили для h1 */
 h1 {
-  color: #1d1d1d;
-  text-align: center; /* Centered the text */
+  color: #353535;
+  text-align: center;
+  /* Centered the text */
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
 
 
 
-.title-page{
+.title-page {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
   text-align: center;
-  margin-left: 8%;
-  margin-right: 8%;
   margin-top: 32px;
+  margin-bottom: 32px;
+  width: 100%;
+
+}
+
+
+.section__main {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+
+}
+
+
+#active {
+  background-color: rgba(231, 55, 94, 1);
+  border: 1px solid rgba(231, 55, 94, 1);
+}
+
+
+.add-button {
+  padding: 10px 32px;
+  color: #2b2b2b;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 2px solid #0d6ed5;
+
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
   width: 100%;
 }
 
 
-.section__main{
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-  
+button:hover {
+  background-color: #004fa4;
+  cursor: pointer;
+  color: #ffffff;
+
 }
 
-
-button{
+button {
   padding: 10px 32px;
-  color: #fff;
-  background-color: #0d6ed5;
+  color: #ffffff;
+  background-color: #429dfd;
   border-radius: 8px;
-  border: 1px solid #0d6ed5;
- 
+  border: 2px solid #429dfd;
+
   text-align: center;
   font-family: Helvetica;
   font-size: 18px;
@@ -58,12 +92,19 @@ button{
 }
 
 
-button:hover{
+button:hover {
   background-color: #004fa4;
   cursor: pointer;
- 
+  color: #ffffff;
+
 }
 
-.myChart{
-width: 50%;
+.chart {
+
+  margin-top: 56px;
+
+  width: 55%;
+  height: 360px;
+
+
 }

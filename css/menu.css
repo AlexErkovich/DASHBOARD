@@ -36,9 +36,12 @@ body {
 }
 
 #menu ul li a:hover {
-  background-color: rgba(255, 0, 0, 0.994);
+  background-color: rgba(231, 55, 94, 1);
   border-radius: 5px;
+  box-shadow: inset 0 0 0 1px #ffffff; /* цвет и размеры бордера */
+  transition:  background-color 0.5s ease; /* добавляем переход для свойства background-color */
 }
+
 
 /* Скрыть подменю по умолчанию */
 .sub-menu {

@@ -15,52 +15,80 @@
         <div class="title-page">
             <h1>Связь и коммуникация</h1>
             <div class="section__main">
-                <button onclick="navigationPageDashboard()" class="button"> Бизнес процессы </button>
-                <button onclick="navigationPageTasks()" class="button"> Задачи </button>
+                <button onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
+                <button id="active" onclick="navigationPageTasks()" class="button"> Задачи </button>
                 <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>
             </div>
         </div>
-        <canvas id="myChart"></canvas>
+        <div class="chart">
+            <canvas id="myChart"></canvas>
+        </div>
 
         <?php
-        $servername = "localhost";
-        $username = "Alex";
-        $password = "12345";
-        $dbname = "todo_db";
+        // ... (подключение к базе данных и запросы)
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        // ... (извлечение данных из базы)
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        if (isset($_POST['submit'])) {
+            // ... (извлечение данных из POST)
 
-        $communicationData = [];
-        $advertisementData = [];
-        $dateLabels = [];
+            // Очистим массивы от пустых значений
+            $communicationData = array_filter($communicationData, function($value) {
+                return $value !== '';
+            });
+            $advertisementData = array_filter($advertisementData, function($value) {
+                return $value !== '';
+            });
+            $financeData = array_filter($financeData, function($value) {
+                return $value !== '';
+            });
+            $productionData = array_filter($productionData, function($value) {
+                return $value !== '';
+            });
+            $qualityData = array_filter($qualityData, function($value) {
+                return $value !== '';
+            });
 
-        $sql = "SELECT COUNT(*) AS count_communication, DATE(date) AS communication_date FROM communication GROUP BY DATE(date)";
-        $result = $conn->query($sql);
+            // Теперь можем добавить непустые значения в базу данных
+            foreach ($communicationData as $value) {
+                if (!empty($value)) {
+                    $sql = "INSERT INTO communication (communication_value) VALUES ('$value')";
+                    $conn->query($sql);
+                }
+            }
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $communicationData[] = $row['count_communication'];
-                $dateLabels[] = $row['communication_date'];
+            foreach ($advertisementData as $value) {
+                if (!empty($value)) {
+                    $sql = "INSERT INTO advertisement (advertisement_value) VALUES ('$value')";
+                    $conn->query($sql);
+                }
+            }
+
+            foreach ($financeData as $value) {
+                if (!empty($value)) {
+                    $sql = "INSERT INTO finance (finance_value) VALUES ('$value')";
+                    $conn->query($sql);
+                }
+            }
+
+            foreach ($productionData as $value) {
+                if (!empty($value)) {
+                    $sql = "INSERT INTO production (production_value) VALUES ('$value')";
+                    $conn->query($sql);
+                }
+            }
+
+            foreach ($qualityData as $value) {
+                if (!empty($value)) {
+                    $sql = "INSERT INTO quality (quality_value) VALUES ('$value')";
+                    $conn->query($sql);
+                }
             }
         }
 
-        $sql = "SELECT COUNT(*) AS count_advertisement, DATE(date) AS advertisement_date FROM advertisement GROUP BY DATE(date)";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $advertisementData[] = $row['count_advertisement'];
-            }
-        }
-
-        $conn->close();
+        // ... (закрытие соединения и прочее)
         ?>
 
-        
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
             var chart = new Chart(ctx, {
@@ -68,18 +96,14 @@
                 data: {
                     labels: <?php echo json_encode($dateLabels); ?>,
                     datasets: [{
-                        label: 'Communication',
-                        data: <?php echo json_encode($communicationData); ?>,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: 'Advertisement',
-                        data: <?php echo json_encode($advertisementData); ?>,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
+                            label: 'Communication',
+                            data: <?php echo json_encode($communicationData); ?>,
+                            backgroundColor: 'rgba(255, 251, 245, 1)',
+                            borderColor: 'rgba(255, 232, 197, 1)',
+                            borderWidth: 1
+                        },
+                        // ... (остальные датасеты)
+                    ]
                 },
                 options: {
                     scales: {
@@ -92,7 +116,7 @@
         </script>
 
         <script>
-            function navigationPageDashboard() {
+            function navigationPageMain() {
                 window.location.href = 'index.php';
             }
 
