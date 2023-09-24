@@ -16,8 +16,8 @@
             <h1>Связь и коммуникация</h1>
             <div class="section__main">
                 <button onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
-                <button id="active" onclick="navigationPageTasks()" class="button"> Задачи </button>
-                <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>
+                <button onclick="navigationPageTasks()" class="button"> Задачи </button>
+                <button id="active" onclick="navigationPageDashboard()" class="button"> Dashboard </button>
             </div>
         </div>
         <div class="chart">
@@ -25,68 +25,82 @@
         </div>
 
         <?php
-        // ... (подключение к базе данных и запросы)
+        $servername = "localhost";
+        $username = "Alex";
+        $password = "12345";
+        $dbname = "todo_db";
 
-        // ... (извлечение данных из базы)
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-        if (isset($_POST['submit'])) {
-            // ... (извлечение данных из POST)
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-            // Очистим массивы от пустых значений
-            $communicationData = array_filter($communicationData, function($value) {
-                return $value !== '';
-            });
-            $advertisementData = array_filter($advertisementData, function($value) {
-                return $value !== '';
-            });
-            $financeData = array_filter($financeData, function($value) {
-                return $value !== '';
-            });
-            $productionData = array_filter($productionData, function($value) {
-                return $value !== '';
-            });
-            $qualityData = array_filter($qualityData, function($value) {
-                return $value !== '';
-            });
+        $communicationData = [];
+        $advertisementData = [];
+        $financeData = [];
+        $productionData = [];
+        $dateLabels = [];
 
-            // Теперь можем добавить непустые значения в базу данных
-            foreach ($communicationData as $value) {
-                if (!empty($value)) {
-                    $sql = "INSERT INTO communication (communication_value) VALUES ('$value')";
-                    $conn->query($sql);
-                }
-            }
+        // Communication
 
-            foreach ($advertisementData as $value) {
-                if (!empty($value)) {
-                    $sql = "INSERT INTO advertisement (advertisement_value) VALUES ('$value')";
-                    $conn->query($sql);
-                }
-            }
+        $sql = "SELECT COUNT(*) AS count_communication, DATE(date) AS communication_date FROM communication GROUP BY DATE(date)";
+        $result = $conn->query($sql);
 
-            foreach ($financeData as $value) {
-                if (!empty($value)) {
-                    $sql = "INSERT INTO finance (finance_value) VALUES ('$value')";
-                    $conn->query($sql);
-                }
-            }
-
-            foreach ($productionData as $value) {
-                if (!empty($value)) {
-                    $sql = "INSERT INTO production (production_value) VALUES ('$value')";
-                    $conn->query($sql);
-                }
-            }
-
-            foreach ($qualityData as $value) {
-                if (!empty($value)) {
-                    $sql = "INSERT INTO quality (quality_value) VALUES ('$value')";
-                    $conn->query($sql);
-                }
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $communicationData[] = $row['count_communication'];
+                $dateLabels[] = $row['communication_date'];
             }
         }
 
-        // ... (закрытие соединения и прочее)
+        // Advertisement
+
+        $sql = "SELECT COUNT(*) AS count_advertisement, DATE(date) AS advertisement_date FROM advertisement GROUP BY DATE(date)";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $advertisementData[] = $row['count_advertisement'];
+            }
+        }
+
+        // Finance
+
+        $sql = "SELECT COUNT(*) AS count_finance, DATE(date) AS finance_date FROM finance GROUP BY DATE(date)";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $financeData[] = $row['count_finance'];
+            }
+        }
+
+        // Production
+
+        $sql = "SELECT COUNT(*) AS count_production, DATE(date) AS production_date FROM production GROUP BY DATE(date)";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $productionData[] = $row['count_production'];
+            }
+        }
+
+        // Quality
+
+        $sql = "SELECT COUNT(*) AS count_quality, DATE(date) AS quality_date FROM quality GROUP BY DATE(date)";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $qualityData[] = $row['count_quality'];
+            }
+        }
+
+        
+
+        $conn->close();
         ?>
 
         <script>
@@ -102,7 +116,36 @@
                             borderColor: 'rgba(255, 232, 197, 1)',
                             borderWidth: 1
                         },
-                        // ... (остальные датасеты)
+                        {
+                            label: 'Advertisement',
+                            data: <?php echo json_encode($advertisementData); ?>,
+                            backgroundColor: 'rgba(245, 243, 255, 1)',
+                            borderColor: 'rgba(179, 164, 255, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Finance',
+                            data: <?php echo json_encode($financeData); ?>,
+                            backgroundColor: 'rgba(255, 236, 234, 1)',
+                            borderColor: 'rgba(255, 165, 155, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Production',
+                            data: <?php echo json_encode($productionData); ?>,
+                            backgroundColor: 'rgba(246, 255, 236, 1)',
+                            borderColor: 'rgba(188, 229, 142, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Quality',
+                            data: <?php echo json_encode($qualityData); ?>,
+                            backgroundColor: 'rgba(245, 245, 245, 1)',
+                            borderColor: 'rgba(180, 180, 180, 1)',
+                            borderWidth: 1
+
+
+                        }
                     ]
                 },
                 options: {

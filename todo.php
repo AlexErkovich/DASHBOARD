@@ -14,7 +14,7 @@
         <div class="title-page">
             <h1>Связь и коммуникация</h1>
             <div class="section__main">
-                <button onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
+                <button  onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
                 <button id="active" onclick="navigationPageTasks()" class="button"> Задачи </button>
                 <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>
             </div>
@@ -106,18 +106,16 @@
                     (blockId === 'productionBlock' ? 'production[]' : 'finance[]'));
             newInput.size = '60';
 
-            // Check if the previous input is empty before adding a new one
-            let lastInput = block.querySelector('input[type="text"]');
-            if (lastInput && lastInput.value.trim() === '') {
-                alert('Please fill the previous input before adding a new one.');
-                return; // Stop execution if the previous input is empty
-            }
-
             // Get the label element
             let label = block.querySelector('label');
 
             // Insert the new input after the label
             insertAfter(newInput, label);
+        }
+
+        // Function to insert an element after another
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
     </script>
 </body>
