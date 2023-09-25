@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ваше меню</title>
+    <title>menu</title>
     <script src="js/script.js"></script>
     <link rel="stylesheet" href="css/menu.css">
 </head>
@@ -27,7 +27,7 @@
             <li>
                 <a href="#">Связь и коммуникация</a>
                 <ul class="sub-menu" style="display: none;">
-                    <li><a href="#">Связь и коммуникация</a></li>
+                    <li><a href="connect.php">Связь и коммуникация</a></li>
                     <li><a href="#">Учетные записи</a></li>
                     <li><a href="#">Коллеги</a></li>
                 </ul>

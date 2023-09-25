@@ -78,9 +78,9 @@ button:hover {
 button {
   padding: 10px 32px;
   color: #ffffff;
-  background-color: #429dfd;
+  background-color: #2b8ffa;
   border-radius: 8px;
-  border: 2px solid #429dfd;
+  border: 2px solid #2b8ffa;
 
   text-align: center;
   font-family: Helvetica;
@@ -94,6 +94,7 @@ button {
 
 button:hover {
   background-color: #004fa4;
+  border: 2px solid #004fa4;
   cursor: pointer;
   color: #ffffff;
 

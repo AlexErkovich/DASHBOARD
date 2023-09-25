@@ -25,9 +25,9 @@
                 <div class="todo__block" id="communicationBlock">
                     <label for="communication">Communication and communication</label>
                     <div class="todo__content__row">
-                        <input type="text" id="communication" name="communication[]" size="60">
+                        
                     </div>
-                    <button class="add-button" type="button" onclick="addNewField('communicationBlock')">Добавить поле</button>
+                    <button class="add-button" type="button" onclick="addNewField('communicationBlock')">Создать задачу</button>
                     <div>
                         <?php echo $communicationMessage; ?>
                     </div>
@@ -36,9 +36,9 @@
                 <div class="todo__block" id="advertisementBlock">
                     <label for="advertisement">Advertisement</label>
                     <div class="todo__content__row">
-                        <input type="text" id="advertisement" name="advertisement[]" size="60">
+                        
                     </div>
-                    <button class="add-button" type="button" onclick="addNewField('advertisementBlock')">Добавить поле</button>
+                    <button class="add-button" type="button" onclick="addNewField('advertisementBlock')">Создать задачу</button>
                     <div>
                         <?php echo $advertisementMessage; ?>
                     </div>
@@ -47,9 +47,9 @@
                 <div class="todo__block" id="productionBlock">
                     <label for="production">Production</label>
                     <div class="todo__content__row">
-                        <input type="text" id="production" name="production[]" size="60">
+                        
                     </div>
-                    <button class="add-button" type="button" onclick="addNewField('productionBlock')">Добавить поле</button>
+                    <button class="add-button" type="button" onclick="addNewField('productionBlock')">Создать задачу</button>
                     <div>
                         <?php echo $productionMessage; ?>
                     </div>
@@ -58,9 +58,9 @@
                 <div class="todo__block" id="financeBlock">
                     <label for="finance">Finance</label>
                     <div class="todo__content__row">
-                        <input type="text" id="finance" name="finance[]" size="60">
+                        
                     </div>
-                    <button class="add-button" type="button" onclick="addNewField('financeBlock')">Добавить поле</button>
+                    <button class="add-button" type="button" onclick="addNewField('financeBlock')">Создать задачу</button>
                     <div>
                         <?php echo $financeMessage; ?>
                     </div>
@@ -69,9 +69,9 @@
                 <div class="todo__block" id="qualityBlock">
                     <label for="quality">Quality</label>
                     <div class="todo__content__row">
-                        <input type="text" id="quality" name="quality[]" size="60">
+                        
                     </div>
-                    <button class="add-button" type="button" onclick="addNewField('qualityBlock')">Добавить поле</button>
+                    <button class="add-button" type="button" onclick="addNewField('qualityBlock')">Создать задачу</button>
                     <div>
                         <?php echo $qualityMessage; ?>
                     </div>
@@ -79,6 +79,7 @@
             </div>
             <input id="btn-save" type="submit" value="Выполнить" name="submit">
         </form>
+        <p><?php echo $headerTitle; ?></p>
 
     </div>
 
