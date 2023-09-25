@@ -75,6 +75,14 @@ button:hover {
 
 }
 
+.connect{
+  display: flex;
+  gap: 40px;
+  padding: 16px;
+  width: 100%;
+}
+
+
 button {
   padding: 10px 32px;
   color: #ffffff;

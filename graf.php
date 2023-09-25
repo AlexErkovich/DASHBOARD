@@ -1,3 +1,5 @@
+<?php include('template.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,15 +14,17 @@
 <body>
     <?php include('menu.php'); ?>
     <div class="main">
-    <div class="title-page">
-            <h1>Связь и коммуникация</h1>
+        <div class="title-page">
+        <h1><?php echo $headerTitle; ?></h1>
             <div class="section__main">
-                <button  onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
-                <button id="active" onclick="navigationPageTasks()" class="button"> Задачи </button>
-                <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>
+                <button onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
+                <button onclick="navigationPageTasks()" class="button"> Задачи </button>
+                <button id="active" onclick="navigationPageDashboard()" class="button"> Dashboard </button>
             </div>
         </div>
-    
+        <div class="chart">
+            <canvas id="myChart"></canvas>
+        </div>
 
         <?php
         $servername = "localhost";
@@ -158,7 +162,7 @@
 
         <script>
             function navigationPageMain() {
-                window.location.href = 'index.php';
+                window.location.href = 'connect.php';
             }
 
             function navigationPageTasks() {
