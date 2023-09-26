@@ -34,7 +34,6 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-
         $sql = "SELECT * FROM connect_bp";
         $result = $conn->query($sql);
 
@@ -42,8 +41,12 @@
             while ($row = $result->fetch_assoc()) {
                 echo '
                 <div class="connect">
-                    <button onclick="navigationPageDashboard()" class="button"> ' . $row["name"] . '</button>
-                </div>';
+                    <button onclick="navigateTo(\'' . $row["link_value"] . '\')" class="button"> ' . $row["name"] . '
+        <img src="' . $row["link"] . '" >
+    </button>
+                </div>
+                
+                ';
             }
         } else {
             echo "0 результатов";
@@ -55,9 +58,13 @@
     </div>
 
     <script>
+        function navigateTo(link) {
+            window.open(link, '_blank');
+        }
+
         // ... (existing JavaScript code)
 
-        function navigationPageMain() {
+        function navigationPageEmail() {
             window.location.href = 'index.php';
         }
 

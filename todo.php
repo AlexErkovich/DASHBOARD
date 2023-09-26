@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/todo.css">
     <link rel="stylesheet" href="css/style.css">
+    <title><?php echo $headerTitle; ?></title>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
         <div class="title-page">
         <h1><?php echo $headerTitle; ?></h1>
             <div class="section__main">
-                <button  onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
+                <button  onclick="navigationPageConnect()" class="button"> Бизнес процессы </button>
                 <button id="active" onclick="navigationPageTasks()" class="button"> Задачи </button>
                 <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>
             </div>
@@ -89,8 +90,8 @@
     <script>
         // ... (existing JavaScript code)
 
-        function navigationPageMain() {
-            window.location.href = 'index.php';
+        function navigationPageConnect() {
+            window.location.href = 'connect.php';
         }
 
         function navigationPageTasks() {

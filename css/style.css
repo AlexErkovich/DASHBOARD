@@ -77,9 +77,10 @@ button:hover {
 
 .connect{
   display: flex;
+  flex-direction: row;
   gap: 40px;
   padding: 16px;
-  width: 100%;
+  
 }
 
 
