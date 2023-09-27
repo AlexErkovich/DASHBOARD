@@ -1,5 +1,3 @@
-<?php include('template.php'); ?>
-
 <!DOCTYPE html>
 <html>
 

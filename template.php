@@ -1,6 +1,7 @@
 <?php
 $pageTitle = 'Главная страница';  
-$headerTitle = 'Связь и коммуникация';  
+$headerTitleConnect = 'Связь и коммуникация';  
+$headerTitleConnect__accounts = 'Учетные записи';  
 
 
 $accountsTitle = 'Учетные записи';

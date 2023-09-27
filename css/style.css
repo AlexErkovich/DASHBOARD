@@ -75,19 +75,27 @@ button:hover {
 
 }
 
-.connect{
+.connect {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+  padding: 8px;
+  align-items: left;
+  width: fit-content;
+}
+
+.password {
   display: flex;
   flex-direction: row;
   gap: 40px;
-  padding: 16px;
-  
+  width: 100%;
 }
-
 
 button {
   padding: 10px 32px;
-  color: #ffffff;
-  background-color: #2b8ffa;
+  color: #1b1b1b;
+  background-color: #ffffff;
   border-radius: 8px;
   border: 2px solid #2b8ffa;
 
@@ -102,8 +110,8 @@ button {
 
 
 button:hover {
-  background-color: #004fa4;
-  border: 2px solid #004fa4;
+  background-color: #2b8ffa;
+  border: 2px solid #2b8ffa;
   cursor: pointer;
   color: #ffffff;
 
@@ -116,5 +124,28 @@ button:hover {
   width: 55%;
   height: 360px;
 
+
+}
+
+.passwords__block {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+}
+
+span {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+
+  padding: 8px 32px;
+  border: 1px solid #1b1b1b;
+  border-radius: 16px;
+}
+
+.spans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 
 }
