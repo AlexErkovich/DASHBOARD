@@ -82,7 +82,7 @@ button:hover {
   gap: 8px;
   padding: 8px;
   align-items: left;
-  width: fit-content;
+  width: 100%;
 }
 
 .password {
@@ -121,7 +121,7 @@ button:hover {
 
   margin-top: 56px;
 
-  width: 55%;
+  width: 100%;
   height: 360px;
 
 
@@ -129,8 +129,9 @@ button:hover {
 
 .passwords__block {
   display: flex;
-  flex-direction: row;
-  width: auto;
+  flex-direction: column;
+  width: fit-content;
+  gap: 16px;
 }
 
 span {
@@ -148,4 +149,23 @@ span {
   flex-wrap: wrap;
   gap: 12px;
 
+}
+
+.content_password{
+display: flex;
+flex-direction: column;
+gap: 24px;
+
+}
+
+.content_passwords__password{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.password__content{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }

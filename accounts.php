@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect</title>
+    <title>accounts</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -30,7 +30,7 @@
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            $tables = array("accounts", "accounts_production");
+            $tables = array("accounts_production" , "accounts_communication", "accounts_finance");
 
             echo '<div class="spans">';
 
@@ -40,7 +40,8 @@
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_row()) {
-                        echo '<span onclick="addTagPage(\'' . $table . '\')"> ' . $table . ' (' . $row[0] . ')</span>';
+                        // Изменение: добавлен вызов функции showTableDetails с передачей имени таблицы
+                        echo '<span onclick="showTableDetails(\'' . $table . '\')"> ' . $table . ' (' . $row[0] . ')</span>';
                     }
                 } else {
                     echo "0 результатов";
@@ -53,109 +54,34 @@
             $conn->close();
             ?>
         </div>
-        
-        <h2> Связь и коммуникация</h2>
 
         <div class="passwords__block">
-            <?php
-            $servername = "localhost";
-            $username = "Alex";
-            $password = "12345";
-            $dbname = "todo_db";
 
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT * FROM accounts_production";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '
-                <div class="password">
-                   <div class="connect">
-                      <article>' . $row["name_service"] . ' </article> 
-                      <article>' . $row["login"] . ' </article>   
-                      <button onclick="copyPassword(\'' . $row['password'] . '\')" class="button"> Скопировать пароль </button>
-                    </div>
-                </div>';
-                }
-            } else {
-                echo "0 результатов";
-            }
-
-            // Close the connection
-            $conn->close();
-            ?>
         </div>
 
-        <h2> Производство</h2>
-        <div class="passwords__block">
-            <?php
-            $servername = "localhost";
-            $username = "Alex";
-            $password = "12345";
-            $dbname = "todo_db";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+        <script>
+            function navigateTo(link) {
+                window.open(link, '_blank');
             }
 
-            $sql = "SELECT * FROM accounts";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '
-                <div class="password">
-                   <div class="connect">
-                      <article>' . $row["name_service"] . ' </article> 
-                      <article>' . $row["login"] . ' </article>   
-                      <button onclick="copyPassword(\'' . $row['password'] . '\')" class="button"> Скопировать пароль </button>
-                    </div>
-                </div>';
-                }
-            } else {
-                echo "0 результатов";
+            function navigationPageMain() {
+                // Your code for navigating to the main page
             }
 
-            // Close the connection
-            $conn->close();
-            ?>
-        </div>
+            function navigationPageTasks() {
+                // Your code for navigating to the tasks page
+            }
+
+            function navigationPageDashboard() {
+                // Your code for navigating to the dashboard page
+            }
+
+            // Изменение: добавлена функция для отображения данных таблицы
+            function showTableDetails(tableName) {
+                window.location.href = 'accounts_category.php?name=' + tableName;
+            }
+        </script>
     </div>
-
-    <script>
-        function navigateTo(link) {
-            window.open(link, '_blank');
-        }
-
-        function navigationPageMain() {
-            // Your code for navigating to the main page
-        }
-
-        function navigationPageTasks() {
-            // Your code for navigating to the tasks page
-        }
-
-        function navigationPageDashboard() {
-            // Your code for navigating to the dashboard page
-        }
-
-        function copyPassword(password) {
-            navigator.clipboard.writeText(password);
-            alert('Пароль скопирован: ' + password);
-        }
-    </script>
 </body>
 
 </html>
