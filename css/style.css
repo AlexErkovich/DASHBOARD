@@ -46,8 +46,8 @@ h1 {
 
 
 #active {
-  background-color: rgb(13, 203, 92);
-  border: 1px solid rgb(13, 203, 92);
+  background-color: #0d6ed5;
+  border: 1px solid #0d6ed5;
 }
 
 
@@ -84,13 +84,17 @@ button:hover {
 }
 
 button {
+  display: flex;
   padding: 10px 32px;
+  gap: 12px;
   color: #1b1b1b;
   background-color: #ffffff;
   border-radius: 8px;
-  border: 2px solid #2b8ffa;
+  border: 2px solid #6db2fc;
 
   text-align: center;
+  align-items: center;
+  align-content: center;
   font-family: Helvetica;
   font-size: 18px;
   font-style: normal;
@@ -112,8 +116,7 @@ button:hover {
 
   margin-top: 56px;
 
-  width: 100%;
-  height: 360px;
+  width: auto;
 
 
 }
@@ -171,7 +174,7 @@ span:hover {
 .buttons__group{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  
   gap: 24px;
   
   
@@ -184,7 +187,7 @@ article {
   
   padding: 12px;
   border-radius: 16px;
-  border: 1px solid #dedede; 
+  border: 1px solid #f0f0f0; 
 }
 
 
@@ -198,4 +201,11 @@ article {
 
 h5{
   margin: 0;
+}
+
+
+.todo__content__input{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

@@ -15,7 +15,7 @@
     <?php include('menu.php'); ?>
     <div class="main">
         <div class="title-page">
-        <h1><?php echo $headerTitle; ?></h1>
+            <h1><?php echo $headerTitle; ?></h1>
             <div class="section__main">
                 <button onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
                 <button onclick="navigationPageTasks()" class="button"> Задачи </button>
@@ -42,10 +42,10 @@
         $advertisementData = [];
         $financeData = [];
         $productionData = [];
+        $qualityData = [];
         $dateLabels = [];
 
         // Communication
-
         $sql = "SELECT COUNT(*) AS count_communication, DATE(date) AS communication_date FROM communication GROUP BY DATE(date)";
         $result = $conn->query($sql);
 
@@ -54,10 +54,12 @@
                 $communicationData[] = $row['count_communication'];
                 $dateLabels[] = $row['communication_date'];
             }
+        } else {
+            $communicationData[] = 0;
+            $dateLabels[] = date("Y-m-d");
         }
 
         // Advertisement
-
         $sql = "SELECT COUNT(*) AS count_advertisement, DATE(date) AS advertisement_date FROM advertisement GROUP BY DATE(date)";
         $result = $conn->query($sql);
 
@@ -65,10 +67,12 @@
             while ($row = $result->fetch_assoc()) {
                 $advertisementData[] = $row['count_advertisement'];
             }
+        } else {
+            $advertisementData[] = 0;
+            $dateLabels[] = date("Y-m-d");
         }
 
         // Finance
-
         $sql = "SELECT COUNT(*) AS count_finance, DATE(date) AS finance_date FROM finance GROUP BY DATE(date)";
         $result = $conn->query($sql);
 
@@ -76,10 +80,12 @@
             while ($row = $result->fetch_assoc()) {
                 $financeData[] = $row['count_finance'];
             }
+        } else {
+            $financeData[] = 0;
+            $dateLabels[] = date("Y-m-d");
         }
 
         // Production
-
         $sql = "SELECT COUNT(*) AS count_production, DATE(date) AS production_date FROM production GROUP BY DATE(date)";
         $result = $conn->query($sql);
 
@@ -87,10 +93,12 @@
             while ($row = $result->fetch_assoc()) {
                 $productionData[] = $row['count_production'];
             }
+        } else {
+            $productionData[] = 0;
+            $dateLabels[] = date("Y-m-d");
         }
 
         // Quality
-
         $sql = "SELECT COUNT(*) AS count_quality, DATE(date) AS quality_date FROM quality GROUP BY DATE(date)";
         $result = $conn->query($sql);
 
@@ -98,9 +106,10 @@
             while ($row = $result->fetch_assoc()) {
                 $qualityData[] = $row['count_quality'];
             }
+        } else {
+            $qualityData[] = 0;
+            $dateLabels[] = date("Y-m-d");
         }
-
-        
 
         $conn->close();
         ?>
@@ -145,8 +154,6 @@
                             backgroundColor: 'rgba(245, 245, 245, 1)',
                             borderColor: 'rgba(180, 180, 180, 1)',
                             borderWidth: 1
-
-
                         }
                     ]
                 },

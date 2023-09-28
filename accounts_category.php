@@ -22,9 +22,9 @@
             }
             ?>
             <div class="section__main">
-                <button id="active" onclick="navigationPageMain()" class="button">Бизнес процессы</button>
-                <button onclick="navigationPageTasks()" class="button">Задачи</button>
-                <button onclick="navigationPageDashboard()" class="button">Dashboard</button>
+
+                <button onclick="navigationAddAccount()" class="button">Создать учетную запись</button>
+
             </div>
         </div>
 
@@ -45,7 +45,7 @@
 
             // ряд с табами 
             echo '<div class="tab_category_password">';
-            
+
             // Конструкция foreach ($tables as $table) в PHP используется для итерации по элементам массива.
             // В данном случае, foreach проходит по каждому элементу массива $tables и временно присваивает
             // его значение переменной $table.
@@ -56,30 +56,41 @@
             // итерации цикла.
             //Таким образом, каждая итерация цикла foreach будет брать следующее значение из массива
             // $tables и присваивать его переменной $table. Это позволяет вам выполнять операции с каждым элементом массива.
-          
+
             //$tables = array("table1", "table2", "table3");
-            
+
             //foreach ($tables as $table) {
-                //echo $table;  // Здесь $table будет поочередно содержать "table1", "table2", "table3"
+            //echo $table;  // Здесь $table будет поочередно содержать "table1", "table2", "table3"
             //}
             //В данном примере foreach перебирает массив $tables и для каждой итерации переменная
             // $table принимает значение текущего элемента из массива.
-            
-            
-                  foreach ($tables as $table) {
-                      $sql = "SELECT COUNT(*) FROM $table";
-                      $result = $conn->query($sql);
 
-                      if ($result->num_rows > 0) {
-                       while ($row = $result->fetch_row()) {
+            // Ваш массив с подписями для каждой таблицы
+            $tableCaptions = array(
+                "accounts_communication" => "Коммуникация и связь",
+                "accounts_advertisement" => "Реклама",
+                "accounts_production" => "Производство",
+                "accounts_finance" => "Финансы",
+
+
+            );
+
+            echo '<div class="tab_category_password">';
+            foreach ($tables as $table) {
+                $sql = "SELECT COUNT(*) FROM $table";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_row()) {
                         // Изменение: добавлен вызов функции showTableDetails с передачей имени таблицы
-                        echo '<span onclick="showTableDetails(\'' . $table . '\')"> ' . $table . ' (' . $row[0] . ')</span>';
+                        // Изменение: Добавлена подпись из массива $tableCaptions
+                        echo '<span onclick="showTableDetails(\'' . $table . '\')"> ' . $tableCaptions[$table] . ' (' . $row[0] . ')</span>';
                     }
-                      } else {
-                        echo "0 результатов";
-                    }
+                } else {
+                    echo "0 результатов";
+                }
             }
-            '</div>';
+            echo '</div>';
             echo '<div class="article__group">';
             if (isset($_GET['name'])) {
                 $tableName = $_GET['name'];
@@ -90,8 +101,8 @@
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                       
-                        
+
+
                         echo '<article>';
                         echo '<h5>' . $row["name_service"] . '</h5>';
                         echo '<p>' . $row["login"] . '</p>';
@@ -99,14 +110,13 @@
                         // Исправление: добавлен закрывающий тег article
                         echo '</article>';
                         // Исправление: добавлен закрывающий тег div
-                        
-                    
-                        
+
+
+
                     }
                 } else {
                     echo "No results found for the selected table.";
                 }
-                
             }
             echo '</div>';
             $conn->close();
@@ -114,6 +124,10 @@
         </div>
 
         <script>
+            function navigationAddAccount() {
+                window.location.href = 'accountCreate.php';
+            }
+
             function showTableDetails(tableName) {
                 window.location.href = 'accounts_category.php?name=' + tableName;
             }

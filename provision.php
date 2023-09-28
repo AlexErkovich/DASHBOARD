@@ -14,7 +14,7 @@
     <div class="main">
         <div class="title-page">
             <!-- Исправление: Добавлен вывод переменной $headerTitleConnect -->
-            <h1><?php echo $headerTitleConnect; ?></h1>
+            <h1><?php echo $headerTitleProvision; ?></h1>
             <div class="section__main">
                 <button id="active" onclick="navigationPageMain()" class="button">Бизнес процессы</button>
                 <button onclick="navigationPageTasks()" class="button">Задачи</button>
@@ -33,7 +33,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT * FROM connect_bp";
+        $sql = "SELECT * FROM provision_bp";
         $result = $conn->query($sql);
 
         // Исправление: Перенос открывающего тега div за пределы цикла
@@ -44,7 +44,7 @@
                 echo '<button onclick="navigateTo(\'' . $row["link_value"] . '\')" class="button">';
                 if ($row["img"]) {
                     $imageData = base64_encode($row["img"]);  // Base64-кодируем изображение
-                    echo '<img  src="data:image/png;base64,' . $imageData . '" alt="Изображение" style="width: 40px; height: 40px; border-radius:8px;">';
+                    echo '<img  src="data:image/png;base64,' . $imageData . '" alt="Изображение" style="width: 40px; height: 40px;">';
                 }
                 echo $row["name"];
                 

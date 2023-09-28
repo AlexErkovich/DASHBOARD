@@ -52,8 +52,8 @@
                 <a href="#">Производство</a>
                 <ul class="sub-menu" style="display: none;">
                     <li><a href="#">Планирование</a></li>
-                    <li><a href="#">Обеспечение</a></li>
-                    <li><a href="#">Производство</a></li>
+                    <li><a href="provision.php">Обеспечение производства</a></li>
+                    <li><a href="production.php">Производство</a></li>
                 </ul>
             </li>
             <li>

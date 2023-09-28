@@ -14,7 +14,7 @@
     <div class="main">
         <div class="title-page">
             <!-- Исправление: Добавлен вывод переменной $headerTitleConnect -->
-            <h1><?php echo $headerTitleConnect; ?></h1>
+            <h1><?php echo $headerTitleProduction; ?></h1>
             <div class="section__main">
                 <button id="active" onclick="navigationPageMain()" class="button">Бизнес процессы</button>
                 <button onclick="navigationPageTasks()" class="button">Задачи</button>
@@ -33,7 +33,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT * FROM connect_bp";
+        $sql = "SELECT * FROM production_bp";
         $result = $conn->query($sql);
 
         // Исправление: Перенос открывающего тега div за пределы цикла
