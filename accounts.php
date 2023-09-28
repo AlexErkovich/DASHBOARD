@@ -30,10 +30,10 @@
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            $tables = array("accounts_production" , "accounts_communication", "accounts_finance");
+            $tables = array("accounts_production", "accounts_communication", "accounts_finance", "accounts_advertisement");
 
+            // ряд с табами 
             echo '<div class="spans">';
-
             foreach ($tables as $table) {
                 $sql = "SELECT COUNT(*) FROM $table";
                 $result = $conn->query($sql);
@@ -47,16 +47,12 @@
                     echo "0 результатов";
                 }
             }
-
             echo '</div>';
+            // ряд с табами закрылся
 
             // Close the connection
             $conn->close();
             ?>
-        </div>
-
-        <div class="passwords__block">
-
         </div>
 
         <script>

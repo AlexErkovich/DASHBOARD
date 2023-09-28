@@ -16,7 +16,7 @@
             <?php
             if (isset($_GET['name'])) {
                 $tableName = $_GET['name'];
-                echo '<h1>' . $tableName . '</h1>';
+                echo '<h1>' . $accountsTitle . '</h1>';
             } else {
                 echo '<h1>No table selected</h1>';
             }
@@ -41,27 +41,46 @@
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
+            $tables = array("accounts_production", "accounts_communication", "accounts_finance", "accounts_advertisement");
 
-            $tables = array("accounts_production", "accounts_communication", "accounts_finance");
-            echo '<div class="content_password">';
-            echo '<div class="content_passwords__password">';
+            // ряд с табами 
+            echo '<div class="tab_category_password">';
+            
+            // Конструкция foreach ($tables as $table) в PHP используется для итерации по элементам массива.
+            // В данном случае, foreach проходит по каждому элементу массива $tables и временно присваивает
+            // его значение переменной $table.
+            // Вот как это работает:
+            // foreach - это цикл в PHP, предназначенный для перебора элементов массива.
+            // $tables - это массив, который содержит набор значений (в данном контексте, имен таблиц базы данных).
+            // $table - это временная переменная, которая будет хранить значение текущего элемента массива при каждой
+            // итерации цикла.
+            //Таким образом, каждая итерация цикла foreach будет брать следующее значение из массива
+            // $tables и присваивать его переменной $table. Это позволяет вам выполнять операции с каждым элементом массива.
+          
+            //$tables = array("table1", "table2", "table3");
+            
+            //foreach ($tables as $table) {
+                //echo $table;  // Здесь $table будет поочередно содержать "table1", "table2", "table3"
+            //}
+            //В данном примере foreach перебирает массив $tables и для каждой итерации переменная
+            // $table принимает значение текущего элемента из массива.
+            
+            
+                  foreach ($tables as $table) {
+                      $sql = "SELECT COUNT(*) FROM $table";
+                      $result = $conn->query($sql);
 
-            foreach ($tables as $table) {
-                $sql = "SELECT COUNT(*) FROM $table";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_row()) {
+                      if ($result->num_rows > 0) {
+                       while ($row = $result->fetch_row()) {
                         // Изменение: добавлен вызов функции showTableDetails с передачей имени таблицы
                         echo '<span onclick="showTableDetails(\'' . $table . '\')"> ' . $table . ' (' . $row[0] . ')</span>';
                     }
-                } else {
-                    echo "0 результатов";
-                }
+                      } else {
+                        echo "0 результатов";
+                    }
             }
-
-            echo '</div>';
-
+            '</div>';
+            echo '<div class="article__group">';
             if (isset($_GET['name'])) {
                 $tableName = $_GET['name'];
 
@@ -72,17 +91,22 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                        
-                        echo '<div class="connect">';
-                        echo '<article>' . $row["name_service"] . '</article>';
-                        echo '<article>' . $row["login"] . '</article>';
+                        
+                        echo '<article>';
+                        echo '<h5>' . $row["name_service"] . '</h5>';
+                        echo '<p>' . $row["login"] . '</p>';
                         echo '<button onclick="copyPassword(\'' . $row['password'] . '\')" class="button">Скопировать пароль</button>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
+                        // Исправление: добавлен закрывающий тег article
+                        echo '</article>';
+                        // Исправление: добавлен закрывающий тег div
+                        
+                    
+                        
                     }
                 } else {
                     echo "No results found for the selected table.";
                 }
+                
             }
             echo '</div>';
             $conn->close();
@@ -90,6 +114,10 @@
         </div>
 
         <script>
+            function showTableDetails(tableName) {
+                window.location.href = 'accounts_category.php?name=' + tableName;
+            }
+
             function copyPassword(password) {
                 navigator.clipboard.writeText(password);
                 alert('Пароль скопирован: ' + password);

@@ -1,3 +1,5 @@
+<?php include('template.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +15,7 @@
     <?php include('menu.php'); ?>
     <div class="main">
         <div class="title-page">
-        <h1><?php echo $headerTitle; ?></h1>
+        <h1><?php echo $todoTitle; ?></h1>
             <div class="section__main">
                 <button  onclick="navigationPageConnect()" class="button"> Бизнес процессы </button>
                 <button id="active" onclick="navigationPageTasks()" class="button"> Задачи </button>

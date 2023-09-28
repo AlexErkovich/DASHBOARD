@@ -46,8 +46,8 @@ h1 {
 
 
 #active {
-  background-color: rgba(231, 55, 94, 1);
-  border: 1px solid rgba(231, 55, 94, 1);
+  background-color: rgb(13, 203, 92);
+  border: 1px solid rgb(13, 203, 92);
 }
 
 
@@ -75,15 +75,6 @@ button:hover {
 
 }
 
-.connect {
-  display: flex;
-  flex-direction: column;
-
-  gap: 8px;
-  padding: 8px;
-  align-items: left;
-  width: 100%;
-}
 
 .password {
   display: flex;
@@ -130,7 +121,6 @@ button:hover {
 .passwords__block {
   display: flex;
   flex-direction: column;
-  width: fit-content;
   gap: 16px;
 }
 
@@ -140,9 +130,27 @@ span {
   gap: 32px;
 
   padding: 8px 32px;
-  border: 1px solid #1b1b1b;
-  border-radius: 16px;
+  border: 1px solid #414141;
+  border-radius: 32px;
+
 }
+
+
+span:hover {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+
+  padding: 8px 32px;
+  border: 1px solid #0d6ed5;
+  border-radius: 32px;
+  background-color: #0d6ed5;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.5s ease;
+
+}
+
 
 .spans {
   display: flex;
@@ -151,21 +159,43 @@ span {
 
 }
 
-.content_password{
-display: flex;
-flex-direction: column;
-gap: 24px;
 
-}
-
-.content_passwords__password{
+.tab_category_password{
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  width: auto;
+  gap: 24px;
 }
 
-.password__content{
+
+.buttons__group{
   display: flex;
   flex-direction: row;
-  width: 100%;
+  flex-wrap: wrap;
+  gap: 24px;
+  
+  
+}
+
+/* РАБОТАЕМ С ЭТИМ БЛОКОМ */
+article {
+  display: flex;
+  flex-direction: column;
+  
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid #dedede; 
+}
+
+
+.article__group{
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex-wrap: wrap;
+  
+}
+
+h5{
+  margin: 0;
 }

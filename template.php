@@ -5,4 +5,5 @@ $headerTitleConnect__accounts = 'Учетные записи';
 
 
 $accountsTitle = 'Учетные записи';
+$todoTitle = 'Задачи';
 ?>
