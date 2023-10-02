@@ -23,7 +23,8 @@ form{
   flex-direction: row;
   gap: 24px;
   align-items: center;
-  width: 100%;
+  width: auto;
+  
 }
 
 #row_01 {
@@ -33,7 +34,10 @@ form{
 #btn-save {
   padding: 12px 28px;
   width: auto;
-  color: #fff;
+  color: #f4f4f4; 
+
+  
+  
   background-color: #0d6ed5;
   border-radius: 8px;
   border: 1px solid #0d6ed5;
@@ -81,11 +85,12 @@ form{
   border: 1px solid #004fa4;
 }
 
+
 label {
   font-family: Helvetica;
   font-size: 16px;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 500;
   line-height: normal;
 }
 
@@ -95,3 +100,5 @@ label {
   gap: 16px;
   flex-wrap: wrap;
 }
+
+

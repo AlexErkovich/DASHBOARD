@@ -18,7 +18,7 @@
     <div class="main">
         <div class="title-page">
             <h1><?php echo $todoTitle; ?></h1> <!-- Вывод заголовка -->
-            <div class="section__main">
+            <div class="title-page__section">
                 <button onclick="navigationPageConnect()" class="button"> Бизнес процессы </button>
                 <button id="active" onclick="navigationPageTasks()" class="button"> Задачи </button>
                 <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>

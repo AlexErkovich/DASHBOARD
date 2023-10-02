@@ -10,12 +10,17 @@
 </head>
 
 <body>
+
+<!-- <div class="main">
+        <div class="title-page">
+            <h1 class="title-page__header">
+            <div class="title-page__section">>-->
     <?php include('menu.php'); ?>
     <div class="main">
         <div class="title-page">
             <!-- Исправление: Добавлен вывод переменной $headerTitleConnect -->
             <h1><?php echo $headerTitleConnect; ?></h1>
-            <div class="section__main">
+            <div class="title-page__section">
                 <button id="active" onclick="navigationPageMain()" class="button">Бизнес процессы</button>
                 <button onclick="navigationPageTasks()" class="button">Задачи</button>
                 <button onclick="navigationPageDashboard()" class="button">Dashboard</button>

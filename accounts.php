@@ -14,7 +14,7 @@
     <div class="main">
         <div class="title-page">
             <h1><?php echo $headerTitleConnect__accounts; ?></h1>
-            <div class="section__main">
+            <div class="title-page__section">
                 <button onclick="navigationAddAccount()" class="button">Создать учетную запись</button>
             </div>
         </div>

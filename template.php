@@ -14,6 +14,12 @@ $headerTitleProduction = 'Производство';
 $headerTitleProvision = 'Обеспечение производства';  
 
 
+//Finance
+$headerTitleFinance = 'Финансы';  
+$headerTitleProduction = 'Доход';  
+$headerTitleProvision = 'Расход';  
+
+
 $accountsTitle = 'Учетные записи';
 $todoTitle = 'Задачи';
 ?>

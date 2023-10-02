@@ -1,3 +1,20 @@
+:root{
+  --primary-color: #0d6ed5;
+  --secondary-color: #ffffff;
+
+  --button-background-color: #0d6ed5;
+  --button-border-color: #2e2e2e;
+  --button-text-color: #2e2e2e;
+
+  --button-text_hover-color: #f8f8f8;
+  --button-border_hover-color: #f8f8f8;
+  --button-background_hover-color: #0d6ed5;
+
+  --button-active-color_background: #0d6ed5;
+  --button-active-color_border: #0d6ed5;
+}
+
+
 body {
   margin: 0;
 }
@@ -16,13 +33,12 @@ body {
 
 /* Стили для h1 */
 h1 {
-  color: #353535;
+  color: var(--button-text-color);
   text-align: center;
   /* Centered the text */
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
-
 
 
 .title-page {
@@ -33,21 +49,19 @@ h1 {
   margin-top: 32px;
   margin-bottom: 32px;
   width: 100%;
-
 }
 
 
-.section__main {
+.title-page__section {
   display: flex;
   flex-direction: row;
   gap: 24px;
-
 }
 
 
 #active {
-  background-color: #0d6ed5;
-  border: 1px solid #0d6ed5;
+  background-color: var(--button-active-color_background);
+  border: 1px solid var(--button-active-color_border);
 }
 
 
@@ -88,9 +102,9 @@ button {
   padding: 10px 32px;
   gap: 12px;
   color: #1b1b1b;
-  background-color: #ffffff;
+  background-color: var(--secondary-color);
   border-radius: 8px;
-  border: 2px solid #6db2fc;
+  border: 2px solid #2b8ffa;
 
   text-align: center;
   align-items: center;
@@ -173,7 +187,8 @@ span:hover {
 
 .buttons__group{
   display: flex;
-  flex-direction: row;
+  
+  flex-wrap: wrap;
   
   gap: 24px;
   
@@ -188,6 +203,8 @@ article {
   padding: 12px;
   border-radius: 16px;
   border: 1px solid #f0f0f0; 
+  background-color: #004fa4;
+  color: #f0f0f0;
 }
 
 
@@ -203,9 +220,3 @@ h5{
   margin: 0;
 }
 
-
-.todo__content__input{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}

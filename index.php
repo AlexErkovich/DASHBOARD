@@ -11,16 +11,15 @@
 <body>
     <?php include('menu.php'); ?>
     <div class="main">
-        
-        
+
     </div>
 
     <script>
         // ... (existing JavaScript code)
 
         function navigationPageMain() {
-                window.location.href = 'index.php';
-            }
+            window.location.href = 'index.php';
+        }
 
         function navigationPageTasks() {
             window.location.href = 'todo.php';
@@ -29,7 +28,6 @@
         function navigationPageDashboard() {
             window.location.href = 'graf.php';
         }
-
     </script>
 </body>
 

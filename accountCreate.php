@@ -13,72 +13,48 @@
 <body>
     <?php include('menu.php'); ?>
     <div class="main">
-        <div class="title-page">
+    <div class="title-page">
             <h1><?php echo $headerTitleConnect__accounts; ?></h1> <!-- Вывод заголовка -->
-            <div class="section__main">
-                <button onclick="navigationPageCreateAccount()" class="button">Создать учетную запись</button>
+            <div class="title-page__section">
+                <button onclick="PageClose()" class="button"> Закрыть </button>
             </div>
         </div>
+   
 
-        <form method="post" action="save_account.php">
-            <div class="form__content">
+    <form method="post" action="save_account.php">
+        <div class="form__content">
 
-                <!-- Блок для ввода задач связанных с коммуникациями -->
-                <div class="todo__block" id="communicationBlock">
-                    <label for="communication">Communication and communication</label>
-                    <div class="todo__content__row">
-                        <div class="todo__content__input">
-                            <label>Введи логин сервиса</label>
-                            <input type="text" name="communication_login[]" size="60">
-                        </div>
-                        <div class="todo__content__input">
-                            <label>Введи Пароль </label>
-                            <input type="text" name="communication_password[]" size="60">
-                        </div>
-                        <div class="todo__content__input">
-                            <label>Введи название сервиса </label>
-                            <input type="text" name="communication_service[]" size="60">
-                        </div>
-                    
-                        <?php echo $communicationMessage; ?> <!-- Вывод сообщения для задач связанных с коммуникациями -->
+            <!-- Блок для ввода задач связанных с коммуникациями -->
+            <div class="todo__block" id="communicationBlock">
+                <label for="communication">Communication and communication</label>
+                <div class="todo__content__row">
+                    <div class="todo__content__input">
+                        <label>Введи название сервиса </label>
+                        <input type="text" name="communication_service[]" size="60">
                     </div>
-                </div>
-
-                <input id="btn-save" type="submit" value="Создать" name="submit"> <!-- Кнопка для отправки формы -->
-        </form>
-        <form method="post" action="save_account.php">
-            <div class="form__content">
-
-                <!-- Блок для ввода задач связанных с коммуникациями -->
-                <div class="todo__block" id="communicationBlock">
-                    <label for="communication">Communication and communication</label>
-                    <div class="todo__content__row">
-                        <div class="todo__content__input">
-                            <label>Введи логин сервиса</label>
-                            <input type="text" name="communication_login[]" size="60">
-                        </div>
-                        <div class="todo__content__input">
-                            <label>Введи Пароль </label>
-                            <input type="text" name="communication_password[]" size="60">
-                        </div>
-                        <div class="todo__content__input">
-                            <label>Введи название сервиса </label>
-                            <input type="text" name="communication_service[]" size="60">
-                        </div>
-                    
-                        <?php echo $communicationMessage; ?> <!-- Вывод сообщения для задач связанных с коммуникациями -->
+                    <div class="todo__content__input">
+                        <label>Введи логин сервиса</label>
+                        <input type="text" name="communication_login[]" size="60">
                     </div>
-                </div>
+                    <div class="todo__content__input">
+                        <label>Введи Пароль </label>
+                        <input type="text" name="communication_password[]" size="60">
+                    </div>
 
-                <input id="btn-save" type="submit" value="Создать" name="submit"> <!-- Кнопка для отправки формы -->
-        </form>
+
+                    <?php echo $communicationMessage; ?> <!-- Вывод сообщения для задач связанных с коммуникациями -->
+                </div>
+            </div>
+
+            <input id="btn-save" type="submit" value="Создать" name="submit"> <!-- Кнопка для отправки формы -->
+    </form>
     </div>
 
     </div>
 
     <script>
-        function navigationPageCreateAccount() {
-            window.location.href = 'accounts_category.php';
+        function PageClose() {
+            window.location.href = 'accounts.php';
         }
 
         function copyPassword(password) {

@@ -41,7 +41,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Финансы</a>
+                <a href="finance.php">Финансы</a>
                 <ul class="sub-menu" style="display: none;">
                     <li><a href="#">Доход</a></li>
                     <li><a href="#">Расход</a></li>

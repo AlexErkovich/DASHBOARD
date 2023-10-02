@@ -21,10 +21,8 @@
                 echo '<h1>No table selected</h1>';
             }
             ?>
-            <div class="section__main">
-
+            <div class="title-page__section">
                 <button onclick="navigationAddAccount()" class="button">Создать учетную запись</button>
-
             </div>
         </div>
 
