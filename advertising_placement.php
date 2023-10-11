@@ -10,14 +10,19 @@
 </head>
 
 <body>
+
+    <!-- <div class="main">
+        <div class="title-page">
+            <h1 class="title-page__header">
+            <div class="title-page__section">>-->
     <?php include('menu.php'); ?>
     <div class="main">
         <div class="title-page">
             <!-- Исправление: Добавлен вывод переменной $headerTitleConnect -->
-            <h1><?php echo $headerTitleProduction; ?></h1>
+            <h1><?php echo $headerTitleAdvertisingPlacement; ?></h1>
             <div class="title-page__section">
                 <button id="active" onclick="navigationPageMain()" class="button">Бизнес процессы</button>
-                <button onclick="navigationPageProject()" class="button">Проекты</button>
+                <button onclick="navigationPageTasks()" class="button">Задачи</button>
                 <button onclick="navigationPageDashboard()" class="button">Dashboard</button>
             </div>
         </div>
@@ -33,7 +38,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT * FROM production_bp";
+        $sql = "SELECT * FROM advertising_placement";
         $result = $conn->query($sql);
 
         // Исправление: Перенос открывающего тега div за пределы цикла
@@ -47,11 +52,9 @@
                     echo '<img  src="data:image/png;base64,' . $imageData . '" alt="Изображение" style="width: 40px; height: 40px; border-radius:8px;">';
                 }
                 echo $row["name"];
-                
+
                 echo '</button>';
             }
-
-         
         } else {
             echo "0 результатов";
         }
@@ -74,13 +77,25 @@
             window.location.href = 'index.php';
         }
 
-        function navigationPageProject() {
-            window.location.href = 'production_project.php';
+        function navigationPageTasks() {
+            window.location.href = 'todo.php';
         }
 
         function navigationPageDashboard() {
             window.location.href = 'graf.php';
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var url = window.location.pathname;
+            var menuItems = document.getElementById("menu").getElementsByTagName("a");
+
+            for (var i = 0; i < menuItems.length; i++) {
+                if (menuItems[i].getAttribute("href") === url) {
+                    menuItems[i].classList.add("active");
+                    break;
+                }
+            }
+        });
     </script>
 </body>
 

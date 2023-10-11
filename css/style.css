@@ -1,4 +1,4 @@
-:root{
+:root {
   --primary-color: #0d6ed5;
   --secondary-color: #ffffff;
 
@@ -104,7 +104,7 @@ button {
   color: #1b1b1b;
   background-color: var(--secondary-color);
   border-radius: 8px;
-  border: 2px solid #2b8ffa;
+  border: 1px solid #2b8ffa;
 
   text-align: center;
   align-items: center;
@@ -120,7 +120,7 @@ button {
 
 button:hover {
   background-color: #2b8ffa;
-  border: 2px solid #2b8ffa;
+  border: 1px solid #2b8ffa;
   cursor: pointer;
   color: #ffffff;
 
@@ -177,7 +177,7 @@ span:hover {
 }
 
 
-.tab_category_password{
+.tab_category_password {
   display: flex;
   flex-wrap: wrap;
   width: auto;
@@ -185,38 +185,121 @@ span:hover {
 }
 
 
-.buttons__group{
+.buttons__group {
   display: flex;
-  
+
   flex-wrap: wrap;
-  
+
   gap: 24px;
-  
-  
+
+
 }
 
 /* РАБОТАЕМ С ЭТИМ БЛОКОМ */
 article {
   display: flex;
   flex-direction: column;
-  
+
   padding: 12px;
   border-radius: 16px;
-  border: 1px solid #f0f0f0; 
+  border: 1px solid #f0f0f0;
   background-color: #004fa4;
   color: #f0f0f0;
 }
 
 
-.article__group{
+.article__group {
   display: flex;
   flex-direction: row;
   gap: 24px;
   flex-wrap: wrap;
+
+}
+
+h5 {
+  margin: 0;
+}
+
+
+
+/* Стили для прогресс бара */
+#progress-bar {
+  border: 1px solid #252525;
+  border-radius: 16px;
+  height: 30px;
+  margin-bottom: 20px;
+  position: relative;
+  /* Позиционируем для вложенных элементов */
+  overflow: hidden;
+  /* Ограничиваем видимую область */
+  width: 100%;
+  /* Изначально ширина прогресса равна 100% */
+}
+
+#progress-bar .progress-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  /* Цвет фона прогресса */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  /* Изначально ширина фона прогресса равна 0 */
+}
+
+#progress-bar .progress {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 30px;
+  color: rgb(57, 57, 57);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  /* Размещаем поверх фона */
+}
+
+.project_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-top: 32px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.project_block h1 {
+  text-align: left;
+}
+
+
+/* Группа инпутов */
+
+.project_block_checkbox input {
+  height: 32px;
+  border: 1px solid #252525;
+  border-radius: 16px;
+  margin-bottom: 8px;
+  padding: 0px 12px;
+  width: 100%;
+}
+
+.project_block_checkbox {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 12px;
+}
+
+
+
+
+#checkbox-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
   
 }
 
-h5{
-  margin: 0;
-}
 

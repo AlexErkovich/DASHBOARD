@@ -19,6 +19,13 @@ $headerTitleFinance = 'Финансы';
 $headerTitleProduction = 'Доход';  
 $headerTitleProvision = 'Расход';  
 
+//Advertising
+$headerTitleAdvertisingPlacement = 'Финансы';  
+$headerTitleFinance = 'Обеспечение рекламы';  
+$headerTitleProduction = 'Производство рекламы';  
+$headerTitleAdvertisingPlacement = 'Размещение рекламы';  
+
+
 
 $accountsTitle = 'Учетные записи';
 $todoTitle = 'Задачи';
