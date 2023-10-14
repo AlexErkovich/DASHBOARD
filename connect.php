@@ -11,10 +11,6 @@
 
 <body>
 
-<!-- <div class="main">
-        <div class="title-page">
-            <h1 class="title-page__header">
-            <div class="title-page__section">>-->
     <?php include('menu.php'); ?>
     <div class="main">
         <div class="title-page">

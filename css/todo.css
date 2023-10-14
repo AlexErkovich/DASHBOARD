@@ -1,3 +1,9 @@
+.todo{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
 .todo__block {
   display: flex;
   flex-direction: column;

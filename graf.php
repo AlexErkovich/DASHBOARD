@@ -39,11 +39,7 @@
         }
 
         $communicationData = [];
-        $advertisementData = [];
-        $financeData = [];
-        $productionData = [];
-        $qualityData = [];
-        $dateLabels = [];
+        
 
         // Communication
         $sql = "SELECT COUNT(*) AS count_communication, DATE(date) AS communication_date FROM communication GROUP BY DATE(date)";
@@ -51,63 +47,11 @@
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $communicationData[] = $row['count_communication'];
+                $communicationData[$row['communication_date']] = $row['count_communication'];
                 $dateLabels[] = $row['communication_date'];
             }
         } else {
-            $communicationData[] = 0;
-            $dateLabels[] = date("Y-m-d");
-        }
-
-        // Advertisement
-        $sql = "SELECT COUNT(*) AS count_advertisement, DATE(date) AS advertisement_date FROM advertisement GROUP BY DATE(date)";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $advertisementData[] = $row['count_advertisement'];
-            }
-        } else {
-            $advertisementData[] = 0;
-            $dateLabels[] = date("Y-m-d");
-        }
-
-        // Finance
-        $sql = "SELECT COUNT(*) AS count_finance, DATE(date) AS finance_date FROM finance GROUP BY DATE(date)";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $financeData[] = $row['count_finance'];
-            }
-        } else {
-            $financeData[] = 0;
-            $dateLabels[] = date("Y-m-d");
-        }
-
-        // Production
-        $sql = "SELECT COUNT(*) AS count_production, DATE(date) AS production_date FROM production GROUP BY DATE(date)";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $productionData[] = $row['count_production'];
-            }
-        } else {
-            $productionData[] = 0;
-            $dateLabels[] = date("Y-m-d");
-        }
-
-        // Quality
-        $sql = "SELECT COUNT(*) AS count_quality, DATE(date) AS quality_date FROM quality GROUP BY DATE(date)";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $qualityData[] = $row['count_quality'];
-            }
-        } else {
-            $qualityData[] = 0;
+            $communicationData[date("Y-m-d")] = 0;
             $dateLabels[] = date("Y-m-d");
         }
 
@@ -117,43 +61,49 @@
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
             var chart = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',  
                 data: {
                     labels: <?php echo json_encode($dateLabels); ?>,
-                    datasets: [{
+                    datasets: [
+                        {
                             label: 'Communication',
-                            data: <?php echo json_encode($communicationData); ?>,
-                            backgroundColor: 'rgba(255, 251, 245, 1)',
+                            data: <?php echo json_encode(array_values($communicationData)); ?>,
+                            backgroundColor: 'rgba(255, 251, 245, 0.5)',
                             borderColor: 'rgba(255, 232, 197, 1)',
-                            borderWidth: 1
+                            borderWidth: 1,
+                            fill: false  
                         },
                         {
                             label: 'Advertisement',
-                            data: <?php echo json_encode($advertisementData); ?>,
-                            backgroundColor: 'rgba(245, 243, 255, 1)',
+                            data: <?php echo json_encode(array_values($advertisementData)); ?>,
+                            backgroundColor: 'rgba(245, 243, 255, 0.5)',
                             borderColor: 'rgba(179, 164, 255, 1)',
-                            borderWidth: 1
+                            borderWidth: 1,
+                            fill: false  
                         },
                         {
                             label: 'Finance',
-                            data: <?php echo json_encode($financeData); ?>,
-                            backgroundColor: 'rgba(255, 236, 234, 1)',
+                            data: <?php echo json_encode(array_values($financeData)); ?>,
+                            backgroundColor: 'rgba(255, 236, 234, 0.5)',
                             borderColor: 'rgba(255, 165, 155, 1)',
-                            borderWidth: 1
+                            borderWidth: 1,
+                            fill: false  
                         },
                         {
                             label: 'Production',
-                            data: <?php echo json_encode($productionData); ?>,
-                            backgroundColor: 'rgba(246, 255, 236, 1)',
+                            data: <?php echo json_encode(array_values($productionData)); ?>,
+                            backgroundColor: 'rgba(246, 255, 236, 0.5)',
                             borderColor: 'rgba(188, 229, 142, 1)',
-                            borderWidth: 1
+                            borderWidth: 1,
+                            fill: false  
                         },
                         {
                             label: 'Quality',
-                            data: <?php echo json_encode($qualityData); ?>,
-                            backgroundColor: 'rgba(245, 245, 245, 1)',
+                            data: <?php echo json_encode(array_values($qualityData)); ?>,
+                            backgroundColor: 'rgba(245, 245, 245, 0.5)',
                             borderColor: 'rgba(180, 180, 180, 1)',
-                            borderWidth: 1
+                            borderWidth: 1,
+                            fill: false  
                         }
                     ]
                 },

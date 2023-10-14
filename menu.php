@@ -41,7 +41,7 @@
             <li>
                 <a href="#">Реклама</a>
                 <ul class="sub-menu" style="display: none;">
-                    <li><a href="#">Планирование</a></li>
+                    <li><a href="advertising_planning.php">Планирование</a></li>
                     <li><a href="#">Производство</a></li>
                     <li><a href="advertising_placement.php">Размещение</a></li>
                 </ul>

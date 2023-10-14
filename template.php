@@ -1,6 +1,7 @@
 <?php
 
-//Отделы и подотделы заголовки
+//Заголовки
+$pageTitleProvision = 'Обеспечение производства';  
 
 //Коммуникация и связь
 $pageTitle = 'Главная страница';  
@@ -20,10 +21,10 @@ $headerTitleProduction = 'Доход';
 $headerTitleProvision = 'Расход';  
 
 //Advertising
-$headerTitleAdvertisingPlacement = 'Финансы';  
-$headerTitleFinance = 'Обеспечение рекламы';  
+$headerTitleAdvertisingPlacement = 'Реклама';  
+$headerTitleAdvertisingPlanning = 'Обеспечение рекламы';  
 $headerTitleProduction = 'Производство рекламы';  
-$headerTitleAdvertisingPlacement = 'Размещение рекламы';  
+
 
 
 

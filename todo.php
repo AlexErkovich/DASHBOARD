@@ -24,11 +24,9 @@
                 <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>
             </div>
         </div>
-
-        <!-- Форма для ввода задач и отправки на сервер -->
-        <form method="post" action="save_to_db.php">
-            <div class="form__content">
-
+        <div class="todo">
+            <!-- Форма для ввода задач и отправки на сервер -->
+            <form method="post" action="chart.php" onsubmit="return validateForm()">
                 <!-- Блок для ввода задач связанных с коммуникациями -->
                 <div class="todo__block" id="communicationBlock">
                     <label for="communication">Communication and communication</label>
@@ -88,9 +86,11 @@
                         <?php echo $qualityMessage; ?> <!-- Вывод сообщения для задач связанных с качеством -->
                     </div>
                 </div>
-            </div>
-            <input id="btn-save" type="submit" value="Выполнить" name="submit"> <!-- Кнопка для отправки формы -->
-        </form>
+
+                <input id="btn-save" type="submit" value="Выполнить" name="submit"> <!-- Кнопка для отправки формы -->
+            </form>
+        </div>
+
     </div>
 
     <!-- JavaScript для навигации по страницам и добавления новых полей в форму -->
@@ -126,6 +126,62 @@
             block.querySelector('.todo__content__row').insertAdjacentElement('beforeend', newInput);
         }
 
+        function validateForm() {
+            let form = document.querySelector('form');
+            let communicationInputs = form.querySelectorAll('div#communicationBlock input');
+            let advertisementInputs = form.querySelectorAll('div#advertisementBlock input');
+            let productionInputs = form.querySelectorAll('div#productionBlock input');
+            let financeInputs = form.querySelectorAll('div#financeBlock input');
+            let qualityInputs = form.querySelectorAll('div#qualityBlock input');
+
+            // Функция для проверки, является ли поле пустым
+            function isEmpty(input) {
+                return input.value.trim() === '';
+            }
+
+            // Проверка и удаление пустых полей
+            communicationInputs.forEach((input) => {
+                if (isEmpty(input)) {
+                    input.parentNode.removeChild(input);
+                }
+            });
+
+            advertisementInputs.forEach((input) => {
+                if (isEmpty(input)) {
+                    input.parentNode.removeChild(input);
+                }
+            });
+
+            productionInputs.forEach((input) => {
+                if (isEmpty(input)) {
+                    input.parentNode.removeChild(input);
+                }
+            });
+
+            financeInputs.forEach((input) => {
+                if (isEmpty(input)) {
+                    input.parentNode.removeChild(input);
+                }
+            });
+
+            qualityInputs.forEach((input) => {
+                if (isEmpty(input)) {
+                    input.parentNode.removeChild(input);
+                }
+            });
+
+            // Если все блоки пусты, предупреждаем пользователя
+            if (communicationInputs.length === 0 &&
+                advertisementInputs.length === 0 &&
+                productionInputs.length === 0 &&
+                financeInputs.length === 0 &&
+                qualityInputs.length === 0) {
+                alert('Добавьте хотя бы одну задачу.');
+                return false;
+            }
+
+            return true;
+        }
     </script>
 </body>
 

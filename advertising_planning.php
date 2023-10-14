@@ -5,16 +5,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitleProvision;?></title>
+    <title>Connect</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
+    <!-- <div class="main">
+        <div class="title-page">
+            <h1 class="title-page__header">
+            <div class="title-page__section">>-->
     <?php include('menu.php'); ?>
     <div class="main">
         <div class="title-page">
             <!-- Исправление: Добавлен вывод переменной $headerTitleConnect -->
-            <h1><?php echo $pageTitleProvision; ?></h1>
+            <h1><?php echo $headerTitleAdvertisingPlanning; ?></h1>
             <div class="title-page__section">
                 <button id="active" onclick="navigationPageMain()" class="button">Бизнес процессы</button>
                 <button onclick="navigationPageTasks()" class="button">Задачи</button>
@@ -33,7 +38,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT * FROM provision_bp";
+        $sql = "SELECT * FROM advertising_planning";
         $result = $conn->query($sql);
 
         // Исправление: Перенос открывающего тега div за пределы цикла
@@ -44,14 +49,12 @@
                 echo '<button onclick="navigateTo(\'' . $row["link_value"] . '\')" class="button">';
                 if ($row["img"]) {
                     $imageData = base64_encode($row["img"]);  // Base64-кодируем изображение
-                    echo '<img  src="data:image/png;base64,' . $imageData . '" alt="Изображение" style="width: 40px; height: 40px;">';
+                    echo '<img  src="data:image/png;base64,' . $imageData . '" alt="Изображение" style="width: 40px; height: 40px; border-radius:8px;">';
                 }
                 echo $row["name"];
-                
+
                 echo '</button>';
             }
-
-         
         } else {
             echo "0 результатов";
         }
@@ -81,6 +84,18 @@
         function navigationPageDashboard() {
             window.location.href = 'graf.php';
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var url = window.location.pathname;
+            var menuItems = document.getElementById("menu").getElementsByTagName("a");
+
+            for (var i = 0; i < menuItems.length; i++) {
+                if (menuItems[i].getAttribute("href") === url) {
+                    menuItems[i].classList.add("active");
+                    break;
+                }
+            }
+        });
     </script>
 </body>
 
