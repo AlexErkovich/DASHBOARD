@@ -12,8 +12,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$table = $_GET['table']; // Получаем название таблицы из параметра
+
 // SQL-запрос для подсчета суммы записей для каждой даты
-$sql = "SELECT DATE(date) AS date, COUNT(*) AS count FROM production GROUP BY DATE(date)";
+$sql = "SELECT DATE(date) AS date, COUNT(*) AS count FROM $table GROUP BY DATE(date)";
 
 $result = $conn->query($sql);
 $data = array();
