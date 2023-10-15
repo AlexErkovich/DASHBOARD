@@ -15,7 +15,7 @@
     <?php include('menu.php'); ?>
     <div class="main">
         <div class="title-page">
-            <h1><?php echo $headerTitle; ?></h1>
+            <h1><?php echo $headerTitleConnect; ?></h1>
             <div class="title-page__section">
                 <button onclick="navigationPageMain()" class="button"> Бизнес процессы </button>
                 <button onclick="navigationPageTasks()" class="button"> Задачи </button>

@@ -1,3 +1,4 @@
+<?php include('template.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,11 +16,11 @@
     <?php include('menu.php'); ?> <!-- Подключение файла с меню -->
     <div class="main">
         <div class="title-page">
-            <h1><?php echo $todoTitle; ?></h1> <!-- Вывод заголовка -->
+            <h1><?php echo $headerTitleConnect; ?></h1> <!-- Вывод заголовка -->
             <div class="title-page__section">
                 <button onclick="navigationPageConnect()" class="button"> Бизнес процессы </button>
-                <button id="active" onclick="navigationPageTasks()" class="button"> Задачи </button>
-                <button onclick="navigationPageDashboard()" class="button"> Dashboard </button>
+                <button  onclick="navigationPageTasks()" class="button"> Задачи </button>
+                <button id="active" onclick="navigationPageDashboard()" class="button"> Dashboard </button>
             </div>
         </div>
     </div>
