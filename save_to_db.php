@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Перенаправление на chart.php и вывод сообщения
-    echo '<script>alert("Данные отправлены."); window.location.href = "chart.php";</script>';
+    echo '<script>alert("Данные отправлены."); window.location.href = "chart copy.php";</script>';
 }
 
 // Закрытие соединения

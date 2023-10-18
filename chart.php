@@ -53,8 +53,8 @@
                 datasets: [{
                     label: 'Количество выполненных задач',
                     data: counts,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(148, 197, 255, 1)',
+                    borderColor: 'rgba(3, 100, 203, 1)',
                     borderWidth: 1
                 }]
             },
@@ -80,7 +80,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        fetchData('communication'); // По умолчанию загружаем данные для communication
+        fetchData('advertisement'); // По умолчанию загружаем данные для communication
        
     });
     document.addEventListener('DOMContentLoaded', () => {

@@ -33,6 +33,10 @@ form{
   
 }
 
+input{
+  padding-left: 16px;
+}
+
 #row_01 {
   width: 24px;
   height: 24px;
